@@ -1,0 +1,12 @@
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\TesteApplication.Model.csproj.AssemblyReference.cache
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\TesteApplication.Model.GeneratedMSBuildEditorConfig.editorconfig
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\TesteApplication.Model.AssemblyInfoInputs.cache
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\TesteApplication.Model.AssemblyInfo.cs
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\TesteApplication.Model.csproj.CoreCompileInputs.cache
+G:\Teste\TesteApplication\TesteApplication.Model\bin\Debug\net6.0\TesteApplication.Model.deps.json
+G:\Teste\TesteApplication\TesteApplication.Model\bin\Debug\net6.0\TesteApplication.Model.dll
+G:\Teste\TesteApplication\TesteApplication.Model\bin\Debug\net6.0\TesteApplication.Model.pdb
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\TesteApplication.Model.dll
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\refint\TesteApplication.Model.dll
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\TesteApplication.Model.pdb
+G:\Teste\TesteApplication\TesteApplication.Model\obj\Debug\net6.0\ref\TesteApplication.Model.dll
