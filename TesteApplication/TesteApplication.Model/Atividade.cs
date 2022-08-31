@@ -13,7 +13,7 @@ namespace TesteApplication.Model
         {
             optionsBuilder.UseNpgsql(ConstantesModel.recoverStringConection().Result);
         }
-        public DbSet<Atividade>? Atividades { get; set; }
+        public DbSet<Atividade> Atividades { get; set; }
     }
     [Table("tb_atividade")]
     public class Atividade

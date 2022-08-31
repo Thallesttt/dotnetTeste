@@ -1,0 +1,33 @@
+﻿@model AtividadeListModel
+@using TesteApplication.Models
+@{
+    Layout = "_Layout";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.20.0/tf.min.js"></script>
+<script>
+
+    
+    async function AprendizadoLinear() 
+    {
+        //Quantidade de iterações de treinamento
+        const model = tf.sequential({
+            layers: [tf.layers.dense({ units: 1, inputShape: [10] })]
+        });
+        model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
+
+        for (let iterator = 1; iterator < 5; ++iterator) {
+            const treinamento = await model.fit(tf.ones([8, 10]), tf.ones([8, 1]), {
+                batchSize: 4,
+                epochs: 3
+            });
+            console.log("Loss after Epoch " + iterator + " : " + treinamento.history.loss[0]);
+        }
+
+        return model; 
+    }
+
+
+
+    
+
+</script>
