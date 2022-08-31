@@ -1,0 +1,11 @@
+{
+  "DataBaseName": "TestApplicationDataBase",
+  "Connection": {
+    "Server": "ec2-3-223-242-224.compute-1.amazonaws.com",
+    "Password": "7ca45f2fa826df9600434c606ed89ce44db14740ba906f452ddc3dfd9598a8f4",
+    "DataBase": "d8r844l1vrco3k",
+    "Port": "5432",
+    "User": "hrliruvvvubbix"
+  }
+  
+}

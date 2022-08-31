@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "G:\\Teste\\TesteApplication\\TesteApplication\\TesteApplication.csproj": {}
+    "G:\\dotnetTeste\\TesteApplication\\TesteApplication\\TesteApplication.csproj": {}
   },
   "projects": {
-    "G:\\Teste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj": {
+    "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Constantes\\TesteApplication.Constantes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Teste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj",
-        "projectName": "TesteApplication.Model",
-        "projectPath": "G:\\Teste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj",
+        "projectUniqueName": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Constantes\\TesteApplication.Constantes.csproj",
+        "projectName": "TesteApplication.Constantes",
+        "projectPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Constantes\\TesteApplication.Constantes.csproj",
         "packagesPath": "C:\\Users\\Thalles\\.nuget\\packages\\",
-        "outputPath": "G:\\Teste\\TesteApplication\\TesteApplication.Model\\obj\\",
+        "outputPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Constantes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thalles\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +40,81 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "KubernetesClient": {
+              "target": "Package",
+              "version": "[8.0.68, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[10.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.303\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj",
+        "projectName": "TesteApplication.Model",
+        "projectPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj",
+        "packagesPath": "C:\\Users\\Thalles\\.nuget\\packages\\",
+        "outputPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Thalles\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Constantes\\TesteApplication.Constantes.csproj": {
+                "projectPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Constantes\\TesteApplication.Constantes.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.8, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[10.0.1, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
@@ -68,14 +140,14 @@
         }
       }
     },
-    "G:\\Teste\\TesteApplication\\TesteApplication\\TesteApplication.csproj": {
+    "G:\\dotnetTeste\\TesteApplication\\TesteApplication\\TesteApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\Teste\\TesteApplication\\TesteApplication\\TesteApplication.csproj",
+        "projectUniqueName": "G:\\dotnetTeste\\TesteApplication\\TesteApplication\\TesteApplication.csproj",
         "projectName": "TesteApplication",
-        "projectPath": "G:\\Teste\\TesteApplication\\TesteApplication\\TesteApplication.csproj",
+        "projectPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication\\TesteApplication.csproj",
         "packagesPath": "C:\\Users\\Thalles\\.nuget\\packages\\",
-        "outputPath": "G:\\Teste\\TesteApplication\\TesteApplication\\obj\\",
+        "outputPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Thalles\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -92,8 +164,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "G:\\Teste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj": {
-                "projectPath": "G:\\Teste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj"
+              "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj": {
+                "projectPath": "G:\\dotnetTeste\\TesteApplication\\TesteApplication.Model\\TesteApplication.Model.csproj"
               }
             }
           }
@@ -108,6 +180,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "KubernetesClient": {
+              "target": "Package",
+              "version": "[8.0.68, )"
+            },
             "Microsoft.AspNet.WebApi.Core": {
               "target": "Package",
               "version": "[5.2.9, )"

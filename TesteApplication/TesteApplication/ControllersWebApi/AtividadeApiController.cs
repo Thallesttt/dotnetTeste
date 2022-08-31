@@ -28,12 +28,15 @@ namespace TesteApplication.ControllersWebApi
 
             var retorno = new Atividade
             {
-                DataInicial = TimeInicio.Date,
-                HoraInicial = TimeInicio.TimeOfDay,
-
-                DataFinal = TimeFim.Date,
-                HoraFinal = TimeFim.TimeOfDay,
+                DataHoraInicial = TimeInicio,
+                DataHoraFinal = TimeFim
             };
+            using (var acess_TbAtividade = new AtividadeContext())
+            {
+                acess_TbAtividade.Add(retorno);
+                retorno.Id = acess_TbAtividade.Atividades.Last().Id + 1;
+                acess_TbAtividade.SaveChanges();
+            }
             return retorno;
         }
 

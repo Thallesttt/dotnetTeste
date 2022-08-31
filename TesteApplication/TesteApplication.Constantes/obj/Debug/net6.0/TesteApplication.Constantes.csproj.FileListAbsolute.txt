@@ -1,0 +1,12 @@
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\bin\Debug\net6.0\TesteApplication.Constantes.deps.json
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\bin\Debug\net6.0\TesteApplication.Constantes.dll
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\bin\Debug\net6.0\TesteApplication.Constantes.pdb
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\TesteApplication.Constantes.csproj.AssemblyReference.cache
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\TesteApplication.Constantes.GeneratedMSBuildEditorConfig.editorconfig
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\TesteApplication.Constantes.AssemblyInfoInputs.cache
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\TesteApplication.Constantes.AssemblyInfo.cs
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\TesteApplication.Constantes.csproj.CoreCompileInputs.cache
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\TesteApplication.Constantes.dll
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\refint\TesteApplication.Constantes.dll
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\TesteApplication.Constantes.pdb
+G:\dotnetTeste\TesteApplication\TesteApplication.Constantes\obj\Debug\net6.0\ref\TesteApplication.Constantes.dll
