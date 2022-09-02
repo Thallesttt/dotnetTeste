@@ -6,12 +6,12 @@ namespace TesteApplication.Controllers
 {
     public class AtividadeController:Controller
     {
-        public ActionResult Index() 
+        public IActionResult Index() 
         {
             return View();
         }
 
-        public ActionResult Cadastro(Int64? Id) 
+        public IActionResult Cadastro(Int64? Id) 
         {
             return View();
         }
@@ -20,7 +20,7 @@ namespace TesteApplication.Controllers
         {
             using (var api = new AtividadeApiController()) 
             {
-                 await api.SetAtividadeManually(model.DataInicialString, model.DataFinalString);
+                 await api.Save(model);
             }
             return View(model);
         }

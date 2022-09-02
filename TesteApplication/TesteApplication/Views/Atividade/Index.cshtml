@@ -2,33 +2,88 @@
 @using TesteApplication.Models
 @{
     Layout = "_Layout";
+    //ViewBag.Titulo = "Listagem de Atividades";
+    ViewData["Title"] = "Listagem de Atividades";
 }
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.20.0/tf.min.js"></script>
-<script>
-
-    //Função machine learning
-    async function AprendizadoLinear() 
+@section Scripts
     {
-        //Quantidade de iterações de treinamento
-        const model = tf.sequential({
-            layers: [tf.layers.dense({ units: 1, inputShape: [10] })]
-        });
-        model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.20.0/tf.min.js"></script>
+    <script>
 
-        for (let iterator = 1; iterator < 5; ++iterator) {
-            //momento do aprendizado
-            const treinamento = await model.fit(tf.ones([8, 10]), tf.ones([8, 1]), {
-                batchSize: 4,
-                epochs: 3
-            });
-            console.log("Perda após iteração(Epoch) " + iterator + " : " + treinamento.history.loss[0]);
+        class Atividades {
+            constructor(objeto) {
+                this.text = JSON.stringify(objeto);
+                this.data = JSON.parse(this.text);
+            }
         }
 
-        return model; 
-    }
+        //Função machine learning
+        async function AprendizadoLinear(epochs = 0) {
+            //Quantidade de iterações de treinamento
+            const model = tf.sequential({
+                layers: [tf.layers.dense({ units: 1, inputShape: [1] })]
+            });
+            model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
 
+            for (let iterator = 1; iterator < 5; ++iterator) {
+                //momento do aprendizado
+                const treinamento = await model.fit(tf.ones([8, 10]), tf.ones([8, 1]), {
+                    batchSize: 4,
+                    epochs: epochs
+                });
+                console.log("Perda após iteração(Epoch) " + iterator + " : " + treinamento.history.loss[0]);
+            }
 
+            return model;
+        }
 
-    
+        async function captureRecordsAtividade() {
+            let obj = null;
+            let url = "https://localhost:44388/AtividadeApi/GetRecords",
+                options = {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                }
 
-</script>
+            await fetch(`${url}`, options).then(data =>
+                data.json())
+                .then(results => {
+                    obj = new Atividades(results);
+                });
+            return obj;
+        }
+
+        function generateHtmlText(atividades) {
+
+            let element = document.querySelector("#idRowAtividade");
+            let text = `<ul class = "list-unstyled">`;
+
+            for (var item of atividades.data) {
+
+                Object.keys(item).forEach((parameter, index) => {
+
+                    text += `<li class="fs-14">${parameter}: ${item[parameter]}</li>`;
+
+                });
+            }
+            text = text + "</ul>";
+            element.innerHTML = text;
+
+        }
+
+        let atv = null;
+        const getAtividade = Promise.resolve(captureRecordsAtividade()).then(data => atv = data);
+
+    </script>
+}
+    <div>
+        <h5><span>@ViewData["Title"] </span> </h5>
+        <!--Criação da Linha-->
+        <a class="text-decoration-none" href="javascript:void(0)" id="idGenerateBase" onclick="generateHtmlText(atv)">Visualizar Base de Treino</a>
+        <div class="row" id="idRowAtividade">
+        </div>
+
+    </div>
+

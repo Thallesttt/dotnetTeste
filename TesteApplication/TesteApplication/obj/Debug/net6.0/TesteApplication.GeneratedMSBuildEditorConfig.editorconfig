@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = G:\dotnetTeste\TesteApplication\TesteApplication
 build_property._RazorSourceGeneratorDebug = 
 
+[G:/dotnetTeste/TesteApplication/TesteApplication/Views/Atividade/Cadastro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRpdmlkYWRlXENhZGFzdHJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [G:/dotnetTeste/TesteApplication/TesteApplication/Views/Atividade/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXRpdmlkYWRlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
