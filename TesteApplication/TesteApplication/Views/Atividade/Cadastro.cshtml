@@ -4,54 +4,68 @@
     Layout = "_Layout";
 }
 @section Scripts
-{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.20.0/tf.min.js"></script>
-<script>
-
-    //Função machine learning
-    async function AprendizadoLinear() 
     {
-        //Quantidade de iterações de treinamento
-        const model = tf.sequential({
-            layers: [tf.layers.dense({ units: 1, inputShape: [10] })]
-        });
-        model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.20.0/tf.min.js"></script>
+    <script>
 
-        for (let iterator = 1; iterator < 5; ++iterator) {
-            //momento do aprendizado
-            const treinamento = await model.fit(tf.ones([8, 10]), tf.ones([8, 1]), {
-                batchSize: 4,
-                epochs: 3
-            });
-            console.log("Perda após iteração(Epoch) " + iterator + " : " + treinamento.history.loss[0]);
+        //Inserção de Atividade
+        async function enviar() {
+            let messageText = "";
+            let url = "";
+            const campoInicial = document.querySelector("#iCampoDataInicial"),
+                campoFinal = document.querySelector("#iCampoDataFinal");
+
+
+            let options = {
+                method: "POST",
+                object: {
+                    dataHoraInicial: "0",
+                    dataHoraFinal: "0",
+
+                }
+            }
+            try {
+                await fetch(url, options);
+                messageText = "Sucesso!";
+            }
+            catch (ex) {
+                messageText = "Erro!";
+            }
+            return messageText;
         }
+        let sendButton = document.querySelector("#idEnviar");
 
-        return model; 
-    }
- 
-</script>
+
+    </script>
 }
-<div>
-    <!--Criação da Linha-->
-    <h5> Inserção de Nova Atividade </h5>
-    <div class="row">
+    <div>
+        <!--Criação da Linha-->
+        <h5> Inserção de Nova Atividade </h5>
+        <div class="row justify-content-center">
 
-    <!--Criação da Coluna ( Data Inicial )-->
-        <div class="col-sm-2">
+            <!--Criação da Coluna ( Data Inicial )-->
+            <div class="col-sm-2">
 
-           <label for="iCampoDataInicial"> Data Inicial: </label>               
-           <input type ="date" id="iCampoDataInicial" ></input>
-           
+                <label for="iCampoDataInicial"> Data Inicial: </label>
+                <input type="date" id="iCampoDataInicial" />
+
+            </div>
+
+            <!--Criação da Coluna ( Data Final )-->
+            <div class="col-sm-2">
+
+                <label for="iCampoDataFinal"> Data Final: </label>
+                <input type="date" id="iCampoDataFinal" />
+
+            </div>
+            <div class="row mt-4">
+
+                <div class="text-center">
+                    <input type="button" class="btn btn-success" id="idEnviar" value="Enviar" />
+                </div>
+
+            </div>
         </div>
 
-        <!--Criação da Coluna ( Data Final )-->
-        <div class="col-sm-2">
-
-            <label for="iCampoDataFinal"> Data Final: </label>
-            <input type ="date" id="iCampoDataFinal" ></input>
-
-        </div>
     </div>
-
-</div>
 

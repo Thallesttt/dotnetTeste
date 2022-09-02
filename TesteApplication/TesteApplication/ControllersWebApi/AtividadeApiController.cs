@@ -55,7 +55,7 @@ namespace TesteApplication.ControllersWebApi
             return retorno;
         }
 
-        [HttpGet("SetAtividadeManually")]
+        [HttpPost("SetAtividadeManually")]
         public async Task SetAtividadeManually(String Inicio, String Fim)
         {
             var TimeInicio = Conversion(Inicio);
@@ -80,8 +80,8 @@ namespace TesteApplication.ControllersWebApi
         {
             var retorno = new Atividade
             {
-                DataHoraFinal = Conversion(model.DataFinalString),
-                DataHoraInicial = Conversion(model.DataInicialString),
+                DataHoraFinal = Conversion(model?.DataFinalString),
+                DataHoraInicial = Conversion(model?.DataInicialString),
             };
             return retorno;
         }
