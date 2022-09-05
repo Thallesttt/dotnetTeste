@@ -56,24 +56,32 @@ namespace TesteApplication.ControllersWebApi
         }
 
         [HttpPost("SetAtividadeManually")]
-        public async Task SetAtividadeManually(String Inicio, String Fim)
+        public async Task SetAtividadeManually([FromBody] AtividadeCadastroModel model)
         {
-            var TimeInicio = Conversion(Inicio);
-            var TimeFim = Conversion(Fim);
-
-            var retorno = new Atividade
+            try
             {
-                DataHoraInicial = TimeInicio,
-                DataHoraFinal = TimeFim
-            };
-            using (var acess_TbAtividade = new AtividadeContext())
-            {
-                retorno.Id = acess_TbAtividade.Atividades.Last().Id + 1;
+                //Mudança para Datetime
+                DateTime TimeInicio = Conversion(model.DataInicialString),
+                         TimeFim = Conversion(model.DataFinalString);
 
-                acess_TbAtividade.Add(retorno);
-                acess_TbAtividade.SaveChanges();
+                var retorno = new Atividade
+                {
+                    DataHoraInicial = TimeInicio,
+                    DataHoraFinal = TimeFim
+                };
+                using (var acess_TbAtividade = new AtividadeContext())
+                {
+                    var Atividades = acess_TbAtividade.Atividades.ToList();
+                    retorno.Id = Atividades.Last().Id + 1;
+
+                    acess_TbAtividade.Add(retorno);
+                    acess_TbAtividade.SaveChanges();
+                }
             }
-
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private Atividade Bind(AtividadeCadastroModel model)
@@ -100,7 +108,9 @@ namespace TesteApplication.ControllersWebApi
 
         private DateTime Conversion(string timeTXT)
         {
-            return Convert.ToDateTime(timeTXT);
+            DateTime date = Convert.ToDateTime(timeTXT);
+            date = date.ToUniversalTime();
+            return date;
         }
 
 

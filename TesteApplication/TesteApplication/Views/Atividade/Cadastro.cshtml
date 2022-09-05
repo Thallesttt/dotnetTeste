@@ -10,30 +10,39 @@
 
         //Inserção de Atividade
         async function enviar() {
-            let messageText = "";
-            let url = "";
-            const campoInicial = document.querySelector("#iCampoDataInicial"),
-                campoFinal = document.querySelector("#iCampoDataFinal");
+            let ok = false;
+            let url = "https://localhost:44388/AtividadeApi/SetAtividadeManually";
+            const campoInicial = `${document.querySelector("#iCampoDataInicial").value} ${document.querySelector("#iCampoHorarioInicial").value}`,
+                  campoFinal = `${document.querySelector("#iCampoDataFinal").value} ${document.querySelector("#iCampoHorarioFinal").value}`;
 
 
             let options = {
-                method: "POST",
-                object: {
-                    dataHoraInicial: "0",
-                    dataHoraFinal: "0",
+                "method": "POST",
+                "headers": { "Content-Type": "application/json" },
+                "body": JSON.stringify({
+                    dataInicialString: campoInicial,
+                    dataFinalString: campoFinal,
 
-                }
+                }),
+                //mode:"no-cors"
             }
             try {
-                await fetch(url, options);
-                messageText = "Sucesso!";
+                let apireq = await fetch(url, options).then(function(data) { console.log(data); });
+                ok = true;
             }
             catch (ex) {
-                messageText = "Erro!";
+                ok = false;
             }
-            return messageText;
+            return ok;
         }
         let sendButton = document.querySelector("#idEnviar");
+        sendButton.addEventListener("click", async function() {
+            let mensagem = await enviar();
+            if (!mensagem) {
+                console.log("Erro!");
+            }
+        })
+
 
 
     </script>
@@ -44,7 +53,7 @@
         <div class="row justify-content-center">
 
             <!--Criação da Coluna ( Data Inicial )-->
-            <div class="col-sm-2">
+            <div class="col-sm-3">
 
                 <label for="iCampoDataInicial"> Data Inicial: </label>
                 <input type="date" id="iCampoDataInicial" />
@@ -52,10 +61,24 @@
             </div>
 
             <!--Criação da Coluna ( Data Final )-->
-            <div class="col-sm-2">
+            <div class="col-sm-3">
 
                 <label for="iCampoDataFinal"> Data Final: </label>
                 <input type="date" id="iCampoDataFinal" />
+
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-2">
+
+            <div class="col-sm-3">
+                <label for="iCampoHorarioInicial"> Horário Inicial: </label>
+                <input type="time" id="iCampoHorarioInicial" />
+
+            </div>
+            <div class="col-sm-3">
+                <label for="iCampoHorarioFinal"> Horário Final: </label>
+                <input type="time" id="iCampoHorarioFinal" />
 
             </div>
             <div class="row mt-4">

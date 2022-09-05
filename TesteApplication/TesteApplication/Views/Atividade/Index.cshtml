@@ -18,21 +18,24 @@
         }
 
         //Função machine learning
-        async function AprendizadoLinear(epochs = 0) {
+        async function AprendizadoLinear(atv, epochs = 0) {
             //Quantidade de iterações de treinamento
             const model = tf.sequential({
                 layers: [tf.layers.dense({ units: 1, inputShape: [1] })]
             });
             model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
 
-            for (let iterator = 1; iterator < 5; ++iterator) {
-                //momento do aprendizado
-                const treinamento = await model.fit(tf.ones([8, 10]), tf.ones([8, 1]), {
-                    batchSize: 4,
-                    epochs: epochs
-                });
-                console.log("Perda após iteração(Epoch) " + iterator + " : " + treinamento.history.loss[0]);
-            }
+            let array = [];
+            atv.forEach(item => array.push(item.minutos_Diferenca));
+
+            const tensor = tf.tensor1d(array);
+            //momento do aprendizado
+            const treinamento = await model.fit([45,60,120,240], [4,1], {
+                //batchSize: 4,
+                epochs: epochs
+            });
+            let previsao = model.predict([array[array.length - 1]], [1, 1]);
+            document.querySelector("#idResponseML").innerHTML = previsao.toString();
 
             return model;
         }
@@ -78,6 +81,25 @@
         let atv = null;
         const getAtividade = Promise.resolve(captureRecordsAtividade()).then(data => atv = data);
 
+
+
+        let ML = document.querySelector("#id_ML");
+        ML.addEventListener("click", async function() {
+            try {
+                if (document.querySelector("#idRowAtividade").innerHTML == ``) {
+                    throw "Base não Listada";
+                }
+                else {
+                    await AprendizadoLinear(atv.data, 20);
+                }
+            }
+            catch (ex) {
+                console.log(ex);
+            }
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("#idRowAtividade").innerHTML = "";
+        });
     </script>
 }
     <div>
@@ -87,15 +109,21 @@
 
             <div class="card-body text-center">
                 <a class="text-decoration-none" href="javascript:void(0)" id="idGenerateBase" onclick="generateHtmlText(atv)">Visualizar Base de Treino</a>
+
             </div>
 
             <div class="row text-center" style="max-height:100px;" id="idRowAtividade">
             </div>
 
+
+
         </div>
         <div class="container-fluid">
+            <a class="text-decoration-none" href="javascript:void(0)" id="id_ML">Realizar esquemas de Machine Learning</a>
+            <div class="row text-center" id="idResponseML">
+            </div>
 
-            <a  href="@Url.Action("Cadastro","Atividade")"class="btn btn-info text-white">Gerar nova Atividade</a>
+            <a href="@Url.Action("Cadastro","Atividade")" class="btn btn-info text-white">Gerar nova Atividade</a>
         </div>
 
     </div>
