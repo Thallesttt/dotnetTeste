@@ -20,11 +20,13 @@ namespace TesteApplication.Model
     {
         [Key()]
         [Column("id")]
-        public virtual Int64 Id{get;set;}
+        public virtual Int64 Id { get; set; }
         [Column("data_hora_inicio")]
         public virtual DateTime DataHoraInicial { get; set; }
-        [Column("data_hora_final")]        
+        [Column("data_hora_final")]
         public virtual DateTime DataHoraFinal { get; set; }
-        
+        [Column("distancia")]
+        public Int64 Distancia { get; set; }
+
     }
 }

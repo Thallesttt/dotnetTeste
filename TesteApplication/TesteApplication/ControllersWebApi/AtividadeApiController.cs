@@ -67,7 +67,8 @@ namespace TesteApplication.ControllersWebApi
                 var retorno = new Atividade
                 {
                     DataHoraInicial = TimeInicio,
-                    DataHoraFinal = TimeFim
+                    DataHoraFinal = TimeFim,
+                    Distancia = model.DistanciaMetros.HasValue ? model.DistanciaMetros.Value : 0,
                 };
                 using (var acess_TbAtividade = new AtividadeContext())
                 {
@@ -102,6 +103,8 @@ namespace TesteApplication.ControllersWebApi
                 DataHoraInicial = model.DataHoraInicial.ToString("dd/MM/yyyy HH:mm:ss"),
                 Minutos_Diferenca = (model.DataHoraFinal - model.DataHoraInicial).TotalMinutes,
                 Ano_Referencia = model.DataHoraFinal.Year,
+                Distancia = model.Distancia,
+
             };
             return retorno;
         }
