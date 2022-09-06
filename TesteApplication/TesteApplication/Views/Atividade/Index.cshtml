@@ -25,15 +25,24 @@
             });
             model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
 
-            let array = [];
-            atv.forEach(item => array.push(item.minutos_Diferenca));
+            let arrayDistancia = [],
+                arrayMinutos = [];
+            atv.forEach(item => arrayMinutos.push(item.minutos_Diferenca));
 
-            const tensor = tf.tensor1d(array);
+            const tensorx = tf.tensor2d(arrayDistancia, [(arrayDistancia.length - 1), 1]);
+            const tensory = tf.tensor2d(arrayMinutos, [(arrayMinutos.length - 1), 1]);
             //momento do aprendizado
-            const treinamento = await model.fit([45,60,120,240], [4,1], {
-                //batchSize: 4,
-                epochs: epochs
-            });
+            let testeTempo = false;
+            let testeDistancia = false;
+
+            let treinamento = null;
+            if (testeTempo) {
+                treinamento = await model.fit(tensorx, tensory, {
+                    //batchSize: 4,
+                    epochs: epochs
+                });
+            }
+
             let previsao = model.predict([array[array.length - 1]], [1, 1]);
             document.querySelector("#idResponseML").innerHTML = previsao.toString();
 
